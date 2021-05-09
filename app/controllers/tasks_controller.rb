@@ -10,10 +10,10 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
 
-    if @task.save
-      flash[:success] = 'Task created'
+    if @task.save!
+      flash = 'Task created'
     else
-      flash[:error] = 'Something went wrong'
+      flash = 'Something went wrong'
     end
     redirect_to candidates_path
   end
@@ -22,23 +22,24 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      flash[:success] = 'Task updated'
+      flash = 'Task updated'
     else
-      flash[:error] = 'Something went wrong'
+      flash= 'Something went wrong'
     end
+    redirect_to candidates_path
   end
 
   private
 
   def set_task
-    @task = Task.find_by(candidate_id: params[:id].to_s)
+    @task = Task.find_by(candidate_ids: params[:id])
   end
 
   def task_params
     params.require(:task).permit(
       :title,
       :description,
-      :candidate_id
+      candidate_ids: []
     )
   end
 end

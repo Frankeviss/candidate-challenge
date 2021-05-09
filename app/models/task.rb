@@ -1,4 +1,4 @@
 class Task < ApplicationRecord
-  belongs_to :candidate
-  has_many :candidates
+ has_many :assignments
+ has_many :candidates, thorugh: :assignments
 end

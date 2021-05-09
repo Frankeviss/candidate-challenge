@@ -5,5 +5,5 @@ require 'faker'
 end
 
 Candidate.all.each do |candidate|
-  Task.create(title: 'test', candidate_id: [candidate.id], description: 'test description')
+  Task.create(title: 'test', candidate_ids: [candidate.id], description: 'test description')
 end

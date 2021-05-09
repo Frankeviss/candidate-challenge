@@ -1,7 +1,8 @@
 = form_with model: @task, url: tasks_path, method: :post do |f|
   = f.label 'Candidate  '
   %br
-  = f.select :candidate_id, Candidate.all.collect {|c| [ c.name, c.id ] }, { include_blank: true, multiple: true }
+  = f.fields_for :candidate_ids do |ff|
+    = f.select :candidate_ids, Candidate.all.collect {|c| [ c.name, c.id ] }, { :prompt => "Select", }, { multiple: true }
   %br
   = f.label :title
   %br

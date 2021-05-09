@@ -9,4 +9,4 @@
     - @candidates.each do |candidate|
       %tr
         %td= link_to candidate.name, candidate_path(candidate)
-        %td= @tasks.size
+        %td= Task.where(candidate_ids: [candidate.id]).size

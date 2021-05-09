@@ -3,6 +3,8 @@ class TasksController < ApplicationController
  
   def new
     @task = Task.new
+
+    render 'new'
   end 
     
   def create
@@ -29,14 +31,14 @@ class TasksController < ApplicationController
   private
 
   def set_task
-    @task = Task.find(params[:id])
+    @task = Task.find_by(candidate_id: params[:id].to_s)
   end
 
   def task_params
     params.require(:task).permit(
       :title,
-      :description
-      candidate_ids: %w[id _destroy]
+      :description,
+      :candidate_id
     )
   end
 end

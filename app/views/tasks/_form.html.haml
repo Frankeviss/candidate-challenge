@@ -1,9 +1,15 @@
-.modal
-  = form_with model: task, url: tasks_path do |f|
-    = f.fields_for :candidate_ids, do |candidate_id|
-      = render "nested_form_field", f: candidate_id
-      = link_to_add_fields "Add Candidate", f, candidate_id 
-
-    = f.text_field :title, task.title ? task.title : ''
-    = f.text_field :description, task.description ? task.description : ''
-    = f.submit
+= form_with model: @task, url: tasks_path, method: :post do |f|
+  = f.label 'Candidate  '
+  %br
+  = f.select :candidate_id, Candidate.all.collect {|c| [ c.name, c.id ] }, { include_blank: true, multiple: true }
+  %br
+  = f.label :title
+  %br
+  = f.text_field :title
+  %br
+  = f.label :description
+  %br
+  = f.text_field :description
+  %br
+  %br
+  = f.submit 'submit'

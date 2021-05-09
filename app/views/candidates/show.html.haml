@@ -1,18 +1,17 @@
 %h1= "Tasks for #{@candidate.name}"
-= link_to new_task_path(@candidate) 'New task'
 - if @tasks.any?
   %table.table
-  %thead
-    %tr
-    %th{scope: 'col'} Task name
-    %th{scope: 'col'} Task description
-    %th{scope: 'col'} Actions
-  %tbody
-    - if @tasks.any?
-      - @tasks.each do |task|
-        %tr
-          %td= task.title
-          %td= task.description
-          %td= link_to 'actions', edit_task_path(task), remote: true
+    %thead
+      %tr
+        %th{scope: 'col'} Name
+        %th{scope: 'col'} Description
+        %th{scope: 'col'} Actions
+    %tbody
+      - if @tasks.any?
+        - @tasks.each do |task|
+          %tr
+            %td= task.title
+            %td= task.description
+            %td= link_to 'edit', edit_task_path(task)
 - else
   No tasks

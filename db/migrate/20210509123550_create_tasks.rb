@@ -3,9 +3,8 @@ class CreateTasks < ActiveRecord::Migration[6.1]
     create_table :tasks do |t|
       t.string :title
       t.string :description
-
-      t.integer :candidate_id
-
+      t.string :candidate_id
+      
       t.timestamps
     end
   end

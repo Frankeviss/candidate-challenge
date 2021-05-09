@@ -1,6 +1,9 @@
 .modal
-  = form_with model: @task, url: tasks_path do |f|
-    = f.text_field :title
-    = f.text_field :description
-    
+  = form_with model: task, url: tasks_path do |f|
+    = f.fields_for :candidate_ids, do |candidate_id|
+      = render "nested_form_field", f: candidate_id
+      = link_to_add_fields "Add Candidate", f, candidate_id 
+
+    = f.text_field :title, task.title ? task.title : ''
+    = f.text_field :description, task.description ? task.description : ''
     = f.submit

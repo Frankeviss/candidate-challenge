@@ -1,0 +1,11 @@
+%table.table
+  %thead
+    %tr
+      %th{scope: 'col'} Candidate name
+      %th{scope: 'col'} Task count
+  %tbody
+    - @candidates.each do |candidate|
+      %tr
+        %td= link_to candidate.name, candidate_path(candidate)
+        %td= candidate.tasks.size
+        

@@ -1,0 +1,15 @@
+%h1= "Tasks for #{@candidate.name}" 
+%table.table
+  %thead
+    %tr
+      %th{scope: 'col'} Task name
+      %th{scope: 'col'} Task description
+      %th{scope: 'col'} New task
+      %th{scope: 'col'} Edit task
+  %tbody
+    - @tasks.each do |task|
+      %tr
+        %td= task.title
+        %td= task.description
+        %td= link_to 'new', new_task_path(task)
+        %td= link_to 'edit', edit_task_path(task)

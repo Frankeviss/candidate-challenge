@@ -1,24 +1,30 @@
 # README
+## Candidates and their tasks
+* Ruby version: ruby 2.7.1
+* Rails version: Rails 6.1.3.2
+* Clone this repository with the following command in a folder you desire
+git clone 
+* Configuration and start the server
+Navigate to your folder and run the following commands;
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+bundle install
+rails db:create
+rails db:migrate
+rails db:seed
 
-Things you may want to cover:
+rails s
 
-* Ruby version
+* Database
+PostgreSQL 12.5
 
-* System dependencies
+* Solution
+Created three models
+    - Candidate
+    - Assignment
+    - Task
+Connected them with a has_many through relation and added nested form fields to attach multiple candidates on a task through an assignment.
 
-* Configuration
+*Extra
+I first thought nested form fields weren't neccessary so lost a little time trying to refactor, But eventually it turned out it was way more efficient so had to switch it all back but it turned out as it should.
+There's no styling included.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

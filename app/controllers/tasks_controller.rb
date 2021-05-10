@@ -3,6 +3,7 @@ class TasksController < ApplicationController
  
   def new
     @task = Task.new
+    @task.assignments.build
   end 
     
   def create

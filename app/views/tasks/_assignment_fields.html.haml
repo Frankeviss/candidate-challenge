@@ -1,0 +1,6 @@
+.nested-fields
+  = f.hidden_field :_destroy
+  %div
+    = f.select :candidate_id, Candidate.all.collect {|c| [ c.name, c.id ] }
+  %div
+    = link_to "Remove", '#', class: "remove_fields"

@@ -1,9 +1,9 @@
 = form_with model: @task, url: tasks_path, method: :post do |f|
-  = f.label 'Candidate  '
+  = f.label 'Candidate'
   %br
-  = f.fields_for :assignments, f.object.assignments.new do |ff|
-    = ff.select :candidate_id, Candidate.all.collect {|c| [ c.name, c.id ] }, include_blank: true
-  = link_to_add_fields "Add Field", f, :assignments
+  = f.fields_for :assignments do |assignment|
+    = render "assignment_fields", f: assignment
+  = link_to_add_fields "Add Field", f, :assignments 
   %br
   = f.label :title
   %br
